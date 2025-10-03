@@ -54,3 +54,47 @@ One thing to note about a `PriorityQueue` is that an enhanced `for-loop` (or `It
 
 Let’s practice creating a `Queue` and iterating through it.
 
+Example final:
+
+```java
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
+public class Main {
+  public static void main(String[] args) {
+    Queue<String> line = new LinkedList<>();
+    line.add("Mike");
+    line.add("Isabel");
+    line.add("Jenny");
+
+    for(String name: line) {
+      System.out.println(name);
+    }
+
+    processAlphabetically(line);
+  }
+
+  public static void processAlphabetically(Queue<String> queue) {
+    // PriorityQueue = tendra el elemento mas pequeño a la cabeza
+    Queue<String> alphabeticalQueue = new PriorityQueue<>();
+    for(String name: queue){
+      alphabeticalQueue.offer(name);
+    }
+    while(alphabeticalQueue.peek() != null) {
+      String headElement = alphabeticalQueue.remove();
+      System.out.println("Processing: " + headElement);
+    }
+  }
+}
+```
+
+Output:
+```terminal
+Mike
+Isabel
+Jenny
+Processing: Isabel
+Processing: Jenny
+Processing: Mike
+```
